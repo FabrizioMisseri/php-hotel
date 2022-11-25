@@ -134,7 +134,7 @@
             <?php } ?>
 
         </tr>
-        <?php }} else{?>
+        <?php }} elseif($park_select === 'all'){?>
         <!-- / SENZA PARCHEGGIO -->
 
         <!-- ALL TYPE -->
@@ -145,10 +145,13 @@
             <?php foreach($index as $title => $description){ ?>
                 <td>
                 <?php 
-                    
+                    if($title === 'parking' && $description === true){
+                        echo "con parcheggio";
+                    } elseif ($title === 'parking' && $description === false) {
+                        echo "senza parcheggio";
+                    } else {
                         echo $description;
-
-                    
+                    }
                 ?>
                 </td>
             <?php } ?>
