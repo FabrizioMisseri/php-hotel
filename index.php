@@ -66,6 +66,7 @@
     
 
 <table class="table">
+
   <thead>
 
     <tr>
@@ -83,27 +84,58 @@
 
   <tbody>
 
-    <?php foreach ($hotels as $index) { ?>
-    <tr>
-        <?php foreach ($index as $title => $description) { ?>
+        <!-- CON PARCHEGGIO -->
+        <?php foreach ($hotels as $index) { 
+            if($park_select === 'true'){
+                if ($index['parking'] === true) {
+            ?>
+        <tr>
+            <?php foreach($index as $title => $description){ ?>
             <td>
-                <?php if($title === 'parking'){
-                    if($description === true){
-                        echo "c'è il parcheggio";
+                <?php 
+                    if ($title === 'parking') {
+                        echo "con parcheggio";
                     } else {
-                        echo "non c'è il parcheggio";
+                        echo $description;
+
                     }
-                } else {
-                    echo $description;
-                }
                 ?>
             </td>
-        <?php } ?>
-        
-    </tr>
-    <?php } ?>
+            <?php } ?>
+            
+            
+        </tr>
+        <!-- / CON PARCHEGGIO -->
+
+
+
+        <!-- SENZA PARCHEGGIO -->
+        <?php }}elseif ($park_select === 'false') {
+                if ($index['parking'] === false) {
+            ?>
+
+        <tr>
+
+            
+            <?php foreach($index as $title => $description){ ?>
+                <td>
+                <?php 
+                    if ($title === 'parking') {
+                        echo "senza parcheggio";
+                    } else {
+                        echo $description;
+
+                    }
+                ?>
+            </td>
+            <?php } ?>
+
+        </tr>
+        <?php }} } ?>
+        <!-- / SENZA PARCHEGGIO -->
     
   </tbody>
+
 </table>
 
 </body>
