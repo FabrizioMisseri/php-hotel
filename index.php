@@ -55,16 +55,19 @@
 </head>
 <body>
 
-
+<!-- FORM -->
 <form action="index.php" method="GET">
     <select name="park_select" id="">
-        <option value="true">con parcheggio</option>
-        <option value="false">senza parcheggio</option>
+        <option value="all">tutti i tipi di hotel</option>
+        <option value="true">hotel con parcheggio</option>
+        <option value="false">hotel senza parcheggio</option>
     </select>
     <button type="submit">BUTTONE</button>
 </form>
-    
+<!-- / FORM -->
 
+    
+<!-- TABELLA -->
 <table class="table">
 
   <thead>
@@ -131,12 +134,33 @@
             <?php } ?>
 
         </tr>
-        <?php }} } ?>
+        <?php }} else{?>
         <!-- / SENZA PARCHEGGIO -->
+
+        <!-- ALL TYPE -->
+        
+        <tr>
+
+            
+            <?php foreach($index as $title => $description){ ?>
+                <td>
+                <?php 
+                    
+                        echo $description;
+
+                    
+                ?>
+                </td>
+            <?php } ?>
+
+        </tr>
+        <?php } } ?>
+        <!-- ALL TYPE -->
     
   </tbody>
 
 </table>
+<!-- / TABELLA -->
 
 </body>
 </html>
