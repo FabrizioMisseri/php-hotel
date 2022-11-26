@@ -40,7 +40,9 @@
 
     ];
 
-    $park_select = $_GET["park_select"] ?? "";
+    $form_select = $_GET["form_select"] ?? "";
+    $form_vote = $_GET["form_vote"] ?? "";
+
 
 ?>
 
@@ -57,11 +59,12 @@
 
 <!-- FORM -->
 <form action="index.php" method="GET">
-    <select name="park_select" id="">
+    <select name="form_select" id="">
         <option value="all">tutti i tipi di hotel</option>
         <option value="true">hotel con parcheggio</option>
         <option value="false">hotel senza parcheggio</option>
     </select>
+    <input type="number" name="form_vote" value="vote" placeholder="inserisci il voto da filtrare">
     <button type="submit">BUTTONE</button>
 </form>
 <!-- / FORM -->
@@ -89,7 +92,7 @@
 
         <!-- CON PARCHEGGIO -->
         <?php foreach ($hotels as $index) { 
-            if($park_select === 'true'){
+            if($form_select === 'true'){
                 if ($index['parking'] === true) {
             ?>
         <tr>
@@ -113,13 +116,9 @@
 
 
         <!-- SENZA PARCHEGGIO -->
-        <?php }}elseif ($park_select === 'false') {
-                if ($index['parking'] === false) {
-            ?>
-
+        <?php }}elseif ($form_select === 'false') {
+                if ($index['parking'] === false) { ?>
         <tr>
-
-            
             <?php foreach($index as $title => $description){ ?>
                 <td>
                 <?php 
@@ -132,16 +131,13 @@
                 ?>
             </td>
             <?php } ?>
-
         </tr>
-        <?php }} elseif($park_select === 'all'){?>
+        <?php }} elseif($form_select === 'all'){?>
         <!-- / SENZA PARCHEGGIO -->
 
-        <!-- ALL TYPE -->
-        
-        <tr>
 
-            
+        <!-- ALL TYPE -->
+        <tr>
             <?php foreach($index as $title => $description){ ?>
                 <td>
                 <?php 
@@ -155,7 +151,6 @@
                 ?>
                 </td>
             <?php } ?>
-
         </tr>
         <?php } } ?>
         <!-- ALL TYPE -->
